@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function convertToParagraphs() {
+            var text = document.getElementById('input').value;
+            var html = '<p>' + text
+                .trim()
+                .replace(/(?:\r\n|\r|\n)/g, '</p>\n<p>')
+                .replaceAll('<p> </p>', '<br />')
+                .replace(/‘’/g, '"')
+                .replace(/’’/g, '"')
+                .replace(/’/g, '\'')
+                + '</p>';
+            document.getElementById('output').value = html;
+        }
+        function convertToUL() {
+            var text = document.getElementById('input').value;
+            var html = '<ul><li>' + text
+                .trim()
+                .replace(/(?:\r\n|\r|\n)/g, '</li>\n<li>')
+                .replace(/‘’/g, '"')
+                .replace(/’’/g, '"')
+                .replace(/’/g, '\'')
+                + '</li></ul>';
+            document.getElementById('output').value = html;
+        }
+        function convertToOL() {
+            var text = document.getElementById('input').value;
+            var html = '<ol><li>' + text
+                .trim()
+                .replace(/(?:\r\n|\r|\n)/g, '</li>\n<li>')
+                .replace(/[0-9]+\.[\s]+/g, '')
+                .replace(/‘’/g, '"')
+                .replace(/’’/g, '"')
+                .replace(/’/g, '\'')
+                + '</li></ol>';
+            document.getElementById('output').value = html;
+        }
+        function replaceQuotes() {
+            var text = document.getElementById('input').value;
+            var html = text
+                .trim()
+                .replace(/‘’/g, '"')
+                .replace(/’’/g, '"')
+                .replace(/’/g, '\'');
+            document.getElementById('output').value = html;
+        }
+        function formatResearchByCountry() {
+            var text = document.getElementById('output').value;
+            var html = text
+                .trim()
+                .replace(/<p>([a-zA-Z ]+):/g, '<p><em>$1:</em>')
+                .replace(/(<p><em>Authors?\s?:)/g, '<hr />$1');
+            document.getElementById('output').value = html;
+        }
+    </script>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+        }
+
+        textarea {
+            width: 100%;
+            height: 20vh;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea id="input" autofocus></textarea>
+    <hr />
+    <button type="button" onclick="replaceQuotes();">Replace quotes</button>
+    <button type="button" onclick="convertToParagraphs();">Convert to paragraphs</button>
+    <button type="button" onclick="convertToUL();">Convert to UL</button>
+    <button type="button" onclick="convertToOL();">Convert to OL</button>
+    <button type="button" onclick="formatResearchByCountry();">Format research by country</button>
+    <hr />
+    <textarea id="output"></textarea>
+</body>
+
+</html>

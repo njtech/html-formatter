@@ -51,14 +51,6 @@
                 .replace(/’/g, '\'');
             document.getElementById('output').value = html;
         }
-        function formatResearchByCountry() {
-            var text = document.getElementById('output').value;
-            var html = text
-                .trim()
-                .replace(/<p>([a-zA-Z ]+):/g, '<p><em>$1:</em>')
-                .replace(/(<p><em>Authors?\s?:)/g, '<hr />$1');
-            document.getElementById('output').value = html;
-        }
     </script>
     <style>
         body {
@@ -82,7 +74,6 @@
     <button type="button" onclick="convertToParagraphs();">Convert to paragraphs</button>
     <button type="button" onclick="convertToUL();">Convert to UL</button>
     <button type="button" onclick="convertToOL();">Convert to OL</button>
-    <button type="button" onclick="formatResearchByCountry();">Format research by country</button>
     <hr />
     <textarea id="output"></textarea>
 </body>

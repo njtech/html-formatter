@@ -57,7 +57,7 @@
                 .trim()
                 .replace(/<p><\/p>/g, '')
                 .replace(/<p>([a-zA-Z ]+):/g, '<p><em>$1:</em>')
-                .replace(/(<p><em>Authors?\s?:)/g, '<hr />$1');
+                .replace(/(<p><em>Authors?\s?:)/g, '<br /><hr /><br />$1');
             document.getElementById('output').value = html;
         }
     </script>

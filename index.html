@@ -52,6 +52,7 @@
             document.getElementById('output').value = html;
         }
         function formatResearchByCountry() {
+            convertToParagraphs();
             var text = document.getElementById('output').value;
             var html = text
                 .trim()
